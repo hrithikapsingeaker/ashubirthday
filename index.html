@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday Ashu! ❤️ 1 Year Together</title>
+  <meta name="description" content="Mobile-optimized romantic birthday celebration & photo slideshow for Ashu from Hrithik.">
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- YouTube Iframe API for Guaranteed Audio Stream -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- Custom Mobile Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- GPU CSS Animated Floating Hearts Container -->
+  <div class="hearts-bg-container">
+    <div class="floating-heart" style="left: 10%;">❤️</div>
+    <div class="floating-heart" style="left: 25%;">💖</div>
+    <div class="floating-heart" style="left: 45%;">✨</div>
+    <div class="floating-heart" style="left: 65%;">💕</div>
+    <div class="floating-heart" style="left: 80%;">💗</div>
+    <div class="floating-heart" style="left: 92%;">🌸</div>
+  </div>
+
+  <!-- YouTube Audio Iframe Container -->
+  <div id="yt-player-wrap" style="position: fixed; top: -9999px; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;">
+    <div id="yt-player"></div>
+  </div>
+
+  <!-- HTML5 Audio Fallback for song.mp3 / song.m4a / music.mp3 -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+    <source src="song.m4a" type="audio/mp4">
+    <source src="music.mp3" type="audio/mpeg">
+    <source src="audio.mp3" type="audio/mpeg">
+    <source src="until_i_found_you.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Mobile Initial Touch Banner to Unlock Audio & Autoplay -->
+  <div id="touch-overlay" class="touch-audio-overlay">
+    <div class="touch-icon-pulse">
+      <i class="bi bi-music-note-beamed"></i>
+    </div>
+    <h2 class="font-serif text-gradient-pink mb-2">Happy Birthday Ashu! ❤️</h2>
+    <p class="text-white fs-5 mb-4">"I would never fall in love until I found you..."</p>
+    <button class="btn-glow-primary text-uppercase px-4 py-3 fs-6">
+      <i class="bi bi-heart-fill"></i> Tap to Play Song & View Photos 🎵
+    </button>
+  </div>
+
+  <div class="content-wrapper">
+
+    <!-- Mobile Fixed Bottom Audio Player Widget -->
+    <div class="music-bar-widget">
+      <button class="music-btn" id="music-toggle-btn" title="Play / Pause Song">
+        <i class="bi bi-play-fill"></i>
+      </button>
+      <div class="music-info">
+        <div class="music-title" id="music-display-title">Until I Found You 🎵</div>
+        <div class="music-sub">Stephen Sanchez • Background Audio</div>
+      </div>
+      <label for="local-audio-input" class="btn btn-sm btn-outline-light rounded-circle p-2 ms-1" title="Select audio file from phone">
+        <i class="bi bi-upload"></i>
+      </label>
+      <input type="file" id="local-audio-input" accept="audio/*" style="display: none;">
+    </div>
+
+    <!-- Hero Header Section -->
+    <header class="hero-section">
+      <div class="anniversary-badge">
+        <i class="bi bi-heart-fill"></i> 1 Year Anniversary Special
+      </div>
+      <h1 class="hero-title glow-title">
+        Happy Birthday, <span class="text-gradient-pink font-serif">Ashu</span>! 🎉
+      </h1>
+      <p class="hero-subtitle">
+        "I would never fall in love until I found you..." ❤️<br>
+        Thank you for 365 days of endless happiness.
+      </p>
+
+      <button id="start-slideshow-btn" class="btn-glow-primary text-uppercase mb-2">
+        <i class="bi bi-film"></i> Play Photo Slideshow 🎬
+      </button>
+      <a href="#cake" class="btn-glow-secondary">
+        <i class="bi bi-balloon-heart-fill"></i> Blow Candles 🎂
+      </a>
+
+      <!-- Live 365 Days Memory Clock -->
+      <div class="counter-grid">
+        <div class="glass-card counter-item">
+          <div class="counter-number" id="cnt-days">365</div>
+          <div class="counter-label">Days Together</div>
+        </div>
+        <div class="glass-card counter-item">
+          <div class="counter-number" id="cnt-hours">8,760</div>
+          <div class="counter-label">Hours of Love</div>
+        </div>
+        <div class="glass-card counter-item">
+          <div class="counter-number" id="cnt-mins">00</div>
+          <div class="counter-label">Minutes</div>
+        </div>
+        <div class="glass-card counter-item">
+          <div class="counter-number" id="cnt-secs">00</div>
+          <div class="counter-label">Live Secs</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE CINEMATIC SLIDESHOW -->
+    <section id="slideshow-section" class="slideshow-section">
+      <div class="section-header">
+        <span class="section-tag">365 Days Memory Reel</span>
+        <h2 class="section-title text-gradient-pink">Our Story, Photo By Photo</h2>
+        <p class="text-white-50 small">Playing every memory with romantic quotes & background song</p>
+      </div>
+
+      <!-- Slideshow Stage Card for Phone -->
+      <div class="slideshow-stage glass-card">
+        <div class="slideshow-image-container" id="slideshow-image-wrapper">
+          <img id="slideshow-img-a" class="slide-img active-slide" src="IMG_20251103_113000071_HDR.jpg" alt="Ashu Memory Slide A">
+          <img id="slideshow-img-b" class="slide-img" src="IMG_20251104_160922747_BURST000_COVER.jpg" alt="Ashu Memory Slide B">
+          <div class="slideshow-badge" id="slideshow-badge">Memory 1 of 10</div>
+        </div>
+
+        <div class="slideshow-quote-box">
+          <p id="slideshow-quote-text" class="slideshow-quote-text">
+            "I would never fall in love until I found you... 365 days ago, my whole world changed forever."
+          </p>
+          <span class="quote-author font-hand text-warning small">~ For my Ashu ❤️</span>
+        </div>
+
+        <div class="slideshow-progress-bar-container">
+          <div class="slideshow-progress-bar" id="slideshow-progress"></div>
+        </div>
+
+        <div class="slideshow-dots" id="slideshow-dots"></div>
+
+        <div class="slideshow-controls">
+          <button id="prev-slide-btn" class="ctrl-btn">
+            <i class="bi bi-chevron-left"></i> Prev
+          </button>
+          <button id="toggle-play-btn" class="ctrl-btn main-play-btn">
+            <i class="bi bi-pause-fill"></i> Pause
+          </button>
+          <button id="next-slide-btn" class="ctrl-btn">
+            Next <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Memory Album Grid -->
+    <section id="gallery" class="photo-gallery-section">
+      <div class="section-header">
+        <span class="section-tag">All 10 Moments</span>
+        <h2 class="section-title text-gradient-purple">Memory Gallery</h2>
+        <p class="text-white-50 small">Tap any photo to play it in the main player!</p>
+      </div>
+
+      <div class="polaroid-grid">
+
+        <!-- Photo 1 -->
+        <div class="polaroid-card" onclick="jumpToSlide(0)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20251103_113000071_HDR.jpg" alt="Memory 1" loading="lazy">
+            <span class="polaroid-badge">#1</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"I would never fall in love until I found you... 365 days ago, my whole world changed."</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">94</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="polaroid-card" onclick="jumpToSlide(1)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20251104_160922747_BURST000_COVER.jpg" alt="Memory 2" loading="lazy">
+            <span class="polaroid-badge">#2</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"I said, 'I would never fall unless it's you I fall into'... Thank you for being my everything."</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">102</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="polaroid-card" onclick="jumpToSlide(2)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20260116_175642834_HDR.jpg" alt="Memory 3" loading="lazy">
+            <span class="polaroid-badge">#3</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"I was lost in the dark till I saw your face. 365 days of holding your hand, Ashu."</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">118</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="polaroid-card" onclick="jumpToSlide(3)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20260116_180421944_HDR_PORTRAIT.jpg" alt="Memory 4" loading="lazy">
+            <span class="polaroid-badge">#4</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"One whole year of laughter, silly moments, and unconditional love with my favorite person."</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">88</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="polaroid-card" onclick="jumpToSlide(4)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20260116_180431648_HDR_PORTRAIT.jpg" alt="Memory 5" loading="lazy">
+            <span class="polaroid-badge">#5</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"I'll never let you go, my girl. Happy Birthday to the love of my life!"</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">96</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="polaroid-card" onclick="jumpToSlide(5)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20260117_103217774_HDR.jpg" alt="Memory 6" loading="lazy">
+            <span class="polaroid-badge">#6</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"Your smile is my favorite view in the whole wide world. Thank you for this magical year."</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">112</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 7 -->
+        <div class="polaroid-card" onclick="jumpToSlide(6)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20260117_125748296_HDR.jpg" alt="Memory 7" loading="lazy">
+            <span class="polaroid-badge">#7</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"From day one to day 365, loving you has been the easiest decision I've ever made."</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">125</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 8 -->
+        <div class="polaroid-card" onclick="jumpToSlide(7)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20260118_133049169_HDR.jpg" alt="Memory 8" loading="lazy">
+            <span class="polaroid-badge">#8</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"In a world full of temporary things, you are my permanent happiness. Happy Birthday, Ashu!"</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">105</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 9 -->
+        <div class="polaroid-card" onclick="jumpToSlide(8)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20260119_100602448_HDR.jpg" alt="Memory 9" loading="lazy">
+            <span class="polaroid-badge">#9</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"Thank you for being my soulmate, best friend, and partner in crime for 365 beautiful days."</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">130</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 10 -->
+        <div class="polaroid-card" onclick="jumpToSlide(9)">
+          <div class="polaroid-img-wrapper">
+            <img src="IMG_20260119_114211.jpg" alt="Memory 10" loading="lazy">
+            <span class="polaroid-badge">#10</span>
+          </div>
+          <div class="polaroid-content">
+            <p class="love-quote">"One year down, a lifetime to go. Happy Birthday, my beautiful Ashu! ❤️"</p>
+            <div class="card-actions">
+              <button class="heart-react-btn" onclick="event.stopPropagation()">
+                <i class="bi bi-heart-fill"></i> <span class="heart-count">150</span>
+              </button>
+              <span class="view-photo-btn"><i class="bi bi-play-circle-fill"></i> Play Slide</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Birthday Cake & Wish Section -->
+    <section id="cake" class="cake-section">
+      <div class="glass-card cake-container-card">
+        <span class="section-tag">Make a Wish</span>
+        <h2 class="section-title text-gradient-purple mb-3">Make a Wish, Ashu! 🎂</h2>
+        
+        <div class="cake-wrapper">
+          <div class="candle candle-1">
+            <div class="flame"></div>
+            <div class="smoke"></div>
+          </div>
+          <div class="candle candle-2">
+            <div class="flame"></div>
+            <div class="smoke"></div>
+          </div>
+          <div class="candle candle-3">
+            <div class="flame"></div>
+            <div class="smoke"></div>
+          </div>
+          <div class="cake-top-layer"></div>
+          <div class="cake-body"></div>
+        </div>
+
+        <button id="blow-candles-btn" class="btn-glow-primary text-uppercase">
+          <i class="bi bi-wind"></i> Blow Candles 🕯️
+        </button>
+
+        <div id="wish-reveal-box" class="wish-reveal-box">
+          <h4 class="font-serif text-gradient-pink mb-2">✨ Wish Granted! ✨</h4>
+          <p class="small text-white">"May your life be filled with endless smiles, laughter, success, and all the love in the universe."</p>
+          <p class="font-hand fs-4 text-warning mb-0">~ Forever Yours, Hrithik ❤️</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Love Letter Section -->
+    <section class="letter-section">
+      <div class="section-header">
+        <span class="section-tag">From My Heart</span>
+        <h2 class="section-title text-gradient-pink">Letter For You 💌</h2>
+      </div>
+
+      <div class="envelope-wrapper" id="open-envelope-btn">
+        <div class="glass-card envelope-card">
+          <div class="envelope-seal">
+            <i class="bi bi-envelope-heart-fill"></i>
+          </div>
+          <h4 class="font-serif text-white">Tap to Open Your 1-Year Letter</h4>
+          <p class="text-white-50 small mb-0">Sealed with endless love ❤️</p>
+        </div>
+      </div>
+
+      <div class="letter-paper" id="letter-paper">
+        <div class="letter-header">My Dearest Ashu,</div>
+        <div class="letter-body" id="typewriter-text"></div>
+        <div class="letter-signature">Forever & Always,<br>Hrithik ❤️</div>
+      </div>
+    </section>
+
+    <!-- Interactive Balloon Game Section -->
+    <section class="balloon-game-section">
+      <div class="section-header">
+        <span class="section-tag">Pop Love Balloons</span>
+        <h2 class="section-title text-gradient-purple">Pop Balloons 🎈</h2>
+        <p class="text-white-50 small">Tap floating balloons for secret love messages!</p>
+      </div>
+
+      <div class="balloon-container" id="balloon-container"></div>
+    </section>
+
+    <!-- Love Coupons Section -->
+    <section class="gift-coupons-section">
+      <div class="section-header">
+        <span class="section-tag">Privileges</span>
+        <h2 class="section-title text-gradient-pink">Your Love Coupons 🎁</h2>
+      </div>
+
+      <div class="coupon-grid">
+        <div class="coupon-card">
+          <div class="coupon-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+          <div class="coupon-title">Unlimited Hugs & Kisses</div>
+          <p class="text-white-50 small">Valid forever with zero expiration date!</p>
+          <span class="coupon-code">CODE: ASHU-HUG-365</span>
+        </div>
+
+        <div class="coupon-card">
+          <div class="coupon-icon"><i class="bi bi-cup-hot-fill"></i></div>
+          <div class="coupon-title">Late Night Ice Cream Date</div>
+          <p class="text-white-50 small">Hrithik pays & plans everything!</p>
+          <span class="coupon-code">CODE: DATE-NIGHT-100</span>
+        </div>
+
+        <div class="coupon-card">
+          <div class="coupon-icon"><i class="bi bi-trophy-fill"></i></div>
+          <div class="coupon-title">Win Any Argument Instantly</div>
+          <p class="text-white-50 small">Use whenever Hrithik gets annoying 😜</p>
+          <span class="coupon-code">CODE: ASHU-ALWAYS-RIGHT</span>
+        </div>
+
+        <div class="coupon-card">
+          <div class="coupon-icon"><i class="bi bi-stars"></i></div>
+          <div class="coupon-title">Lifetime of Endless Love</div>
+          <p class="text-white-50 small">Guaranteed 365 days a year, forever.</p>
+          <span class="coupon-code">CODE: FOREVER-TOGETHER</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h3 class="font-serif text-gradient-pink mb-2">Happy Birthday Ashu! ❤️</h3>
+      <p class="text-white-50 small">Thank you for 365 wonderful days together.</p>
+      <p class="font-hand fs-3 text-warning mb-0">Made with endless love by Hrithik</p>
+    </footer>
+
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Logic -->
+  <script src="script.js"></script>
+
+</body>
+</html>
